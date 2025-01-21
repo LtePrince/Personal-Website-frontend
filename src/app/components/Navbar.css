@@ -1,0 +1,158 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px); /* 增加高斯模糊效果 */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar.dark-mode {
+    background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 160px;
+  }
+  
+  .logo img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+  
+  .logo strong {
+    color: #333; /* 默认颜色 */
+  }
+  
+  .logo strong.dark-mode {
+    color: #fff; /* 暗色模式下字体颜色改为白色 */
+  }
+  
+  .nav-links {
+    
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .nav-links .theme-switch {
+        margin-top: 7px;
+        align-self: center; /* 确保主题切换开关在中小屏幕上上下居中 */
+    }
+
+    .nav-links a {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+
+    .small-screen-menu {
+      width: 25px;
+      margin-top: 5px;
+    }
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 40px;
+    padding-right: 10vw;
+    position: fixed;
+    right: -260px;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    height: 100vh;
+    background-color: #f5f5f5;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .mobile-menu.dark-mode {
+    background-color: #2e2614; /* dark:bg-gray-800 */
+    color: white; /* dark:text-white */
+  }
+  
+  .nav-links a {
+    
+    margin-left: 20px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  
+  .nav-links a.dark-mode {
+    color: #D2B48C; /* 暗色模式下字体颜色改为亮棕色 */
+  }
+  
+  .nav-links .theme-switch {
+    margin-left: 20px;
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+  }
+  
+  .nav-links .theme-switch {
+    margin-left: 20px;
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+  }
+  
+  .nav-links .theme-switch.switch-on {
+    background-color: #007BFF;
+  }
+  
+  .nav-links .theme-switch.switch-on.dark-mode {
+    background-color: #efc76f; /* 黄色 */
+  }
+  
+  .nav-links .theme-switch .switch {
+    width: 23px;
+    height: 23px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    transition: left 0.3s ease;
+  }
+  
+  .nav-links .theme-switch.switch-on .switch {
+    left: 26px;
+  }
+  
+  .nav-links .theme-switch.switch-on.dark-mode .switch {
+    left: 26px;
+  }

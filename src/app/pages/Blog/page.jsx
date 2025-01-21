@@ -1,11 +1,10 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import Navbar from "./components/Navbar";
-import HomePage from "./components/HomePage";
-import "./page.css";
+import Navbar from "../../components/Navbar";
+import './page.css';
 
-export default function Home() {
-  // 从 localStorage 中读取主题设置
+export default function Blog() {
+	// 从 localStorage 中读取主题设置
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -21,10 +20,9 @@ export default function Home() {
     localStorage.setItem('isDarkMode', JSON.stringify(!isDarkMode));
   };
 
-  return (
-    <div className={`app-container ${isDarkMode ? 'dark-mode' : ''}`} >
-      <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-      <HomePage isDarkMode={isDarkMode} />    
-    </div>
-  );
+	return (
+		<div className={`app-container ${isDarkMode ? 'dark-mode' : ''}`} >
+			<Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+		</div>
+	)
 }
