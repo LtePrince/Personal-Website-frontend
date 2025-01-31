@@ -1,50 +1,100 @@
 h1, h2 {
-    color: #0056b3;
-  }
+  color: #007BFF;
+}
   
-  h1.dark-mode, h2.dark-mode {
-    color: #D2B48C; /* 暗色模式下列表字体颜色改为亮棕色 */
-  }
-  
-  ul {
-    list-style-type: disc;
-    margin-left: 20px;
-  }
-  
-  ul.dark-mode {
-    color: #D2B48C; /* 暗色模式下列表字体颜色改为亮棕色 */
-  }
-  
-  article {
-    margin-top: 20px;
-  }
-  
-  article.dark-mode {
-    color: #D2B48C; /* 暗色模式下文章字体颜色改为亮棕色 */
-  }
-  
-  @media (max-width: 768px) {
-  
-    .main-content {
-      width: calc(90vw);
-      max-width: 100%; /* 确保内容不会超出视口宽度 */
-      margin: 80px auto;
-      padding: 10px;
-    }
-  }
-  
-  .main-content {
-    width: calc(90vw); /* 设置宽度为视口宽度减去左右边距 */
-    margin: 120px auto; /* 使内容左右居中 */
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 100%; /* 确保内容不会超出视口宽度 */
-  }
-  
-  .main-content.dark-mode {
-    background-color: rgba(0, 0, 0, 0.4); /* 半透明黑色背景 */
-    box-shadow: 0 0 45px 10px rgba(245, 212, 111, 0.3); /* 淡黄色光晕 */
-    color: #fbf9f7; /* 暗色模式下字体颜色改为亮棕色 */
-  }
+h1.dark-mode, h2.dark-mode {
+  color: #D2B48C; /* 暗色模式下列表字体颜色改为亮棕色 */
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+ul.dark-mode {
+  color: #D2B48C; /* 暗色模式下列表字体颜色改为亮棕色 */
+}
+
+article {
+  margin-top: 20px;
+}
+
+article.dark-mode {
+  color: #D2B48C; /* 暗色模式下文章字体颜色改为亮棕色 */
+}
+
+.main-content {
+  width: 90%;
+  max-width: 1800px;
+  margin: 120px auto; /* 使内容左右居中 */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-content.dark-mode {
+  background-color: rgba(0, 0, 0, 0.4); /* 半透明黑色背景 */
+  box-shadow: 0 0 45px 10px rgba(245, 212, 111, 0.3); /* 淡黄色光晕 */
+  color: #fbf9f7; /* 暗色模式下字体颜色改为亮棕色 */
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.intro h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.intro p {
+  font-size: 1.2em;
+}
+
+.education, .skills, .latest-blog, .connect-me {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 5px;
+}
+
+.dark-mode h2 {
+  border-bottom: 2px solid #D2B48C;
+}
+
+.skills ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skills li {
+  background-color: #f0f0f0;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.dark-mode .skills li {
+  background-color: #333;
+}
+
+.latest-blog article {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.dark-mode .latest-blog article {
+  background-color: #333;
+}
+
+.connect-me p {
+  font-size: 1.2em;
+  margin: 5px 0;
+}

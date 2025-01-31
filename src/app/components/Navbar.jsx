@@ -22,11 +22,11 @@ function Navbar({ isDarkMode, toggleTheme }) {
   const sideMenu = useRef();
 
   const openMenu = () => {
-    sideMenu.current.style.transform = 'translateX(-16rem)';
+    sideMenu.current.style.transform = 'translateX(-18rem)';
   }
 
   const closeMenu = () => {
-    sideMenu.current.style.transform = 'translateX(16rem)';
+    sideMenu.current.style.transform = 'translateX(18rem)';
   }
 
 	return (
@@ -40,7 +40,7 @@ function Navbar({ isDarkMode, toggleTheme }) {
       <div className="nav-links">
         <Link href={"/"} className={`hidden md:block ${isDarkMode ? 'dark-mode' : ''}`}>Home</Link>
         <Link href={"/pages/Blog"} className={`hidden md:block ${isDarkMode ? 'dark-mode' : ''}`}>Blogs</Link>
-        <Link href={"/pages/Updates"} className={`hidden md:block ${isDarkMode ? 'dark-mode' : ''}`}>Web log</Link>
+        <Link href={"/pages/MyLab"} className={`hidden md:block ${isDarkMode ? 'dark-mode' : ''}`}>MyLab</Link>
         <div className={`theme-switch ${isDarkMode ? 'switch-on dark-mode' : ''}`} onClick={toggleTheme}>
           <div className={`switch ${isDarkMode ? 'switch-on' : ''}`}></div>
         </div>
@@ -59,7 +59,7 @@ function Navbar({ isDarkMode, toggleTheme }) {
         <div className='h-10'></div>
         <li><Link href={"/"} >Home</Link></li>
         <li><Link href={"/pages/Blog"} >Blogs</Link></li>
-        <li><Link href={"/pages/Updates"} >Web log</Link></li>
+        <li><Link href={"/pages/MyLab"} >MyLab</Link></li>
         <li><a href="#Connect">Connect me</a></li>
       </ul>
     </nav>
