@@ -7,8 +7,10 @@ import "./page.css";
 export default function Home() {
   // 从 localStorage 中读取主题设置
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true); // 标记客户端已初始化
     const savedTheme = localStorage.getItem('isDarkMode');
     if (savedTheme) {
       setIsDarkMode(JSON.parse(savedTheme));
@@ -20,6 +22,10 @@ export default function Home() {
     setIsDarkMode(!isDarkMode);
     localStorage.setItem('isDarkMode', JSON.stringify(!isDarkMode));
   };
+
+  if (!isClient) {
+    return null; // 在客户端初始化完成之前不渲染
+  }
 
   return (
     <div className={`app-container ${isDarkMode ? 'dark-mode' : ''}`} >

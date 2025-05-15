@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from "@/app/components/Navbar";
 import SearchBar from '@/app/components/SearchBar';
-import BlogList from '@/app/components/BlogList';
 import Sidebar from '@/app/components/BlogSidebar';
 import ContentSwitcher from '@/app/components/BlogContentSwitcher'
 import './page.css';
@@ -12,8 +11,10 @@ export default function Blog() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState(blogs);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true); // 标记客户端已初始化
     const savedTheme = localStorage.getItem('isDarkMode');
     if (savedTheme) {
       setIsDarkMode(JSON.parse(savedTheme));
@@ -41,6 +42,10 @@ export default function Blog() {
     );
     setFilteredBlogs(filtered);
   };
+
+  if (!isClient) {
+    return null; // 在客户端初始化完成之前不渲染
+  }
 
 	return (
 		<div className={`app-container ${isDarkMode ? 'dark-mode' : ''}`} >
