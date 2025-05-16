@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaGithub, FaTelegram, FaEnvelope} from 'react-icons/fa';
 import './HomePage.css';
 
 function HomePage({ isDarkMode }) {
@@ -35,8 +36,22 @@ function HomePage({ isDarkMode }) {
 
       <section id="Connect" className="connect-me">
         <h2 className={isDarkMode ? 'dark-mode' : ''}>Connect with Me</h2>
-        <p>Email: example@example.com</p>
-        <p>Phone: 123-456-7890</p>
+        <div className="social-icons">
+          <a href="https://github.com/你的github用户名" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <FaGithub size={32} />
+          </a>
+          <a href="https://t.me/你的telegram用户名" target="_blank" rel="noopener noreferrer" title="Telegram">
+            <FaTelegram size={32} />
+          </a>
+          <a href="mailto:example@example.com" title="Email">
+            <FaEnvelope size={32} />
+          </a>
+          <a href="https://space.bilibili.com/你的bilibili数字ID" target="_blank" rel="noopener noreferrer" title="Bilibili">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-6zm5-7l2 3m6-3l-2 3m-5 7v-2m6 0v2"></path>
+            </svg>
+          </a>
+        </div>
       </section>
     </main>
   );

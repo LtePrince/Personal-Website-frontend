@@ -98,3 +98,11 @@ h2 {
   font-size: 1.2em;
   margin: 5px 0;
 }
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px; /* 图标间距可根据需要调整 */
+  margin-top: 10px;
+}
