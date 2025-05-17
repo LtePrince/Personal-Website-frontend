@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 170px;
-    margin-bottom: 120px;
+    margin-top: 150px;
+    margin-bottom: 100px;
     width: 90%;
     max-width: 700px;
     transition: opacity 0.3s, transform 0.3s;

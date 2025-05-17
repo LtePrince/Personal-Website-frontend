@@ -53,8 +53,33 @@ article.dark-mode {
   font-size: 1.2em;
 }
 
-.education, .skills, .latest-blog, .connect-me {
+.education, .interests, .skills, .latest-blog, .connect-me {
   margin-bottom: 40px;
+}
+
+.education-list {
+  list-style: none;
+  padding-left: 1%;
+  margin: 0;
+}
+
+.education-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.interests ul {
+  list-style-type: disc;
+  padding-left: 1%;
+}
+
+.interests li {
+  display: list-item;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
 }
 
 h2 {
@@ -81,7 +106,7 @@ h2 {
 }
 
 .dark-mode .skills li {
-  background-color: #333;
+  background-color: rgba(39, 39, 39, 0.8);
 }
 
 .latest-blog article {
@@ -91,7 +116,7 @@ h2 {
 }
 
 .dark-mode .latest-blog article {
-  background-color: #333;
+  background-color: rgba(39, 39, 39, 0.8);
 }
 
 .connect-me p {
