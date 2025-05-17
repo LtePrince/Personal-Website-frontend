@@ -1,8 +1,8 @@
-h1, h2 {
+.main-content h1, h2 {
   color: #007BFF;
 }
   
-h1.dark-mode, h2.dark-mode {
+.main-content h1.dark-mode, h2.dark-mode {
   color: #D2B48C; /* 暗色模式下列表字体颜色改为亮棕色 */
 }
 

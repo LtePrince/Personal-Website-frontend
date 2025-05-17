@@ -21,14 +21,15 @@ body {
 
 .blog-detail-content {
   width: 90%;
-  max-width: 1800px;
-  margin: 120px auto; /* 使内容左右居中 */
-  padding-left: 7%;
-  padding-right: 7%;
+  max-width: 1500px;
+  margin-top: 120px; /* 使内容左右居中 */
+  padding-left: 2%;
+  padding-right: 2%;
   padding-bottom: 100px;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #333;
 }
 
 .blog-detail-content.dark-mode {
@@ -37,18 +38,23 @@ body {
   color: #fbf9f7; /* 暗色模式下字体颜色改为亮棕色 */
 }
 
-.blog-detail-content h1 {
+.markdown-body {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.markdown-body h1 {
   font-size: 2.2rem;
   margin: 1.2em 0 0.6em 0;
 }
-.blog-detail-content h2 {
+.markdown-body h2 {
   font-size: 1.7rem;
   margin: 1em 0 0.5em 0;
 }
-.blog-detail-content h3 {
+.markdown-body h3 {
   font-size: 1.3rem;
   margin: 0.8em 0 0.4em 0;
 }
-.blog-detail-content {
+.markdown-body {
   font-size: 1.3rem; /* 放大正文 */
 }

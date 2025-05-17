@@ -1,8 +1,10 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { FaArrowLeft } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import Navbar from '@/app/components/Navbar';
+import Comments from '@/app/components/Comments';
 import './page.css';
 
 export default function BlogDetail() {
@@ -41,23 +43,26 @@ export default function BlogDetail() {
     <div className={`blog-detail-container ${isDarkMode ? 'dark-mode' : ''}`}>
       <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <div className={`blog-detail-content ${isDarkMode ? 'dark-mode' : ''}`}>
-        {/* <div>
-          <button
-            onClick={() => window.location.href = '/pages/Blog'}
-            style={{
-              padding: '8px 18px',
-              fontSize: '1.2rem',
-              borderRadius: '6px',
-              border: 'none',
-              background: isDarkMode ? '#333' : '#f5d46f',
-              color: isDarkMode ? '#fbf9f7' : '#222',
-              cursor: 'pointer',
-              marginBottom: '24px'
-            }}
-          >
-            return Blog Page
-          </button>
-        </div> */}
+        <div style={{ display: 'flex', alignItems: 'center', padding: '12px 0' }}>
+        <button
+          onClick={() => window.location.href = '/pages/Blog'}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: isDarkMode ? '#f5d46f' : '#333',
+            cursor: 'pointer',
+            fontSize: '1.2rem',
+            display: 'flex',
+            alignItems: 'center',
+            padding: 0
+          }}
+        >
+          <FaArrowLeft style={{ marginRight: '8px' }} />
+          Return
+        </button>
+      </div>
+      <hr style={{ margin: '0 0 24px 0', borderColor: isDarkMode ? '#444' : '#ccc' }} />
+      
         <div className="markdown-body">
           {markdownContent ? (
             <ReactMarkdown>{markdownContent}</ReactMarkdown>
@@ -66,6 +71,7 @@ export default function BlogDetail() {
           )}
         </div>
       </div>
+      <Comments blogID={blogID} isDarkMode={isDarkMode} />
     </div>
   );
 }

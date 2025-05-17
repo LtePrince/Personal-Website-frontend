@@ -1,0 +1,89 @@
+.comments-container {
+  width: 90%;
+  max-width: 1500px;
+  margin: 70px auto; /* 使内容左右居中 */
+  padding: 10px 20px; /* 上下内边距10px，左右内边距20px */
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.comments-container.dark-mode {
+  background-color: rgba(0, 0, 0, 0.4); /* 半透明黑色背景 */
+  box-shadow: 0 0 45px 10px rgba(245, 212, 111, 0.3); /* 淡黄色光晕 */
+  color: #fbf9f7; /* 暗色模式下字体颜色改为亮棕色 */
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+.comment-form textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.comments-container.dark-mode .comment-form textarea {
+  background-color: #222;
+  color: #f5f5f5;
+  border: 1px solid #555;
+}
+
+.comment-form button {
+  width: 150px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  align-self: flex-end; /* 让按钮靠右 */
+}
+
+.comments-container.dark-mode .comment-form button {
+  background-color: #f5d46f;
+  color: #222;
+}
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+}
+
+.comment-list li {
+  padding: 12px 0;
+  border-top: 1px solid #000000;
+}
+
+.comments-container.dark-mode .comment-list li {
+  border-top: 1px solid #444;
+}
+
+.comment-text {
+  /* 可选：让评论内容更清晰 */
+  font-size: 1.1rem;
+}
+
+.comment-time {
+  font-size: 0.9rem;
+  color: #888;
+  text-align: right;
+  display: block;
+}
+
+.comments-container.dark-mode .comment-time {
+  color: #bbb;
+}

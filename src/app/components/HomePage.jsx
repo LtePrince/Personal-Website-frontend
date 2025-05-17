@@ -15,11 +15,11 @@ function HomePage({ isDarkMode }) {
         <ul className="education-list">
           <li>
             <FaGraduationCap size={20} style={{ marginRight: '10px', verticalAlign: 'middle' }} />
-            The University of Sydney, Master of Science in Computer Science(2025.8-today)
+            The University of Sydney, Master of Science in Computer Science, 2025-today
           </li>
           <li>
             <FaGraduationCap size={20} style={{ marginRight: '10px', verticalAlign: 'middle' }} />
-            Huazhong University of Science and Technology, Bachelor of Science in Computer Science(2021.9-2025.6)
+            Huazhong University of Science and Technology, Bachelor of Science in Computer Science, 2021-2025
           </li>
         </ul>
       </section>
