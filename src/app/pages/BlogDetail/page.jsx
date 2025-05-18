@@ -91,8 +91,8 @@ function BlogDetail() {
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme="./public/giscus/giscus.css"
-        // theme={isDarkMode ? "dark" : "light"}
+        // theme="preferred_color_scheme"
+        theme={isDarkMode ? "dark" : "light"}
         lang="en"
         // loading="lazy"
         strict='0'
