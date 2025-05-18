@@ -5,6 +5,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import Navbar from '@/app/components/Navbar';
 import Comments from '@/app/components/Comments';
+import Giscus from '@giscus/react';
 import './page.css';
 
 export default function BlogDetail() {
@@ -71,7 +72,24 @@ export default function BlogDetail() {
           )}
         </div>
       </div>
-      <Comments blogID={blogID} isDarkMode={isDarkMode} />
+      {/* <Comments blogID={blogID} isDarkMode={isDarkMode} /> */}
+      <div className={`giscus-container ${isDarkMode ? 'dark-mode' : ''}`}>
+      <Giscus
+        repo="LtePrince/Discussion"
+        repoId="R_kgDOOr48BQ"
+        category="Q&A"
+        categoryId="DIC_kwDOOr48Bc4CqR-D"
+        mapping="pathname"
+        reactionsEnabled="1"
+        emitMetadata="0"
+        inputPosition="top"
+        theme="/giscus/giscus.css"
+        // theme={isDarkMode ? "dark" : "light"}
+        lang="en"
+        loading="lazy"
+        strict='0'
+      />
+      </div>
     </div>
   );
 }
