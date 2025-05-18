@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { FaArrowLeft } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
@@ -8,7 +8,15 @@ import Comments from '@/app/components/Comments';
 import Giscus from '@giscus/react';
 import './page.css';
 
-export default function BlogDetail() {
+export default function BlogDetailPageWrapper() {
+  return (
+    <Suspense fallback={<div>加载中...</div>}>
+      <BlogDetail />
+    </Suspense>
+  );
+}
+
+function BlogDetail() {
   const searchParams = useSearchParams();
   const blogID = searchParams.get('id'); // 从 URL 参数中获取博客标题
   const [markdownContent, setMarkdownContent] = useState('');
@@ -83,10 +91,10 @@ export default function BlogDetail() {
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme="/giscus/giscus.css"
+        theme="./public/giscus/giscus.css"
         // theme={isDarkMode ? "dark" : "light"}
         lang="en"
-        loading="lazy"
+        // loading="lazy"
         strict='0'
       />
       </div>
