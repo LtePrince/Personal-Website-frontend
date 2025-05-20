@@ -45,15 +45,15 @@ function Navbar({ isDarkMode, toggleTheme }) {
           <div className={`switch ${isDarkMode ? 'switch-on' : ''}`}></div>
         </div>
         <button className='block md:hidden ml-4' onClick={openMenu}>
-          <Image src={assets.SmallMenu} alt="Menu" className='small-screen-menu'/>
+          <Image src={isDarkMode ? assets.SmallMenuDark : assets.SmallMenu} alt="Menu" className='small-screen-menu'/>
         </button>
       </div>
       {/*----------mobile menu----------- */}
 
       <ul ref={sideMenu} className={`mobile-menu ${isDarkMode ? 'dark-mode' : ''}`}>
-        <div className='flex justify-end'>
+        <div className='flex close-btn-row'>
           <button className='block md:hidden ml-4' onClick={closeMenu}>
-            <Image src={assets.Close} alt="Close" className='w-5 cursor-pointer'/>
+            <Image src={isDarkMode ? assets.CloseDark : assets.Close} alt="Close" className='w-5 cursor-pointer' />
           </button>
         </div>
         <div className='h-10'></div>
