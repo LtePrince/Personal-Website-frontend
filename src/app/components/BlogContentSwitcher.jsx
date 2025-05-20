@@ -11,9 +11,9 @@ export default function ContentSwitcher({blogs, isDarkMode }) {
       case 'latest':
         return <div><BlogList blogs={blogs} isDarkMode={isDarkMode} /></div>;
       case 'column':
-        return <div style={{fontSize: '25px', textAlign: 'center', padding: '100px'}}>The blogger is working hard to fill it.</div>;
+        return <div style={{fontSize: '25px', textAlign: 'center', paddingTop: '7%', paddingBlock: '100px'}}>The blogger is working hard to fill it.</div>;
       case 'log':
-        return <div style={{fontSize: '25px', textAlign: 'center', padding: '100px'}}>The blogger is working hard to fill it.</div>;
+        return <div style={{fontSize: '25px', textAlign: 'center', paddingTop: '7%', paddingBlock: '100px'}}>The blogger is working hard to fill it.</div>;
       default:
         return null;
     }
