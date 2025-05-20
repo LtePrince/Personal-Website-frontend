@@ -14,11 +14,15 @@ function HomePage({ isDarkMode }) {
         <h2 className={isDarkMode ? 'dark-mode' : ''}>Education</h2>
         <ul className="education-list">
           <li>
-            <FaGraduationCap size={20} style={{ marginRight: '10px', verticalAlign: 'middle' }} />
+            <span className="edu-icon">
+              <FaGraduationCap size={24} />
+            </span>
             The University of Sydney, Master of Science in Computer Science, 2025-today
           </li>
           <li>
-            <FaGraduationCap size={20} style={{ marginRight: '10px', verticalAlign: 'middle' }} />
+            <span className="edu-icon">
+              <FaGraduationCap size={24} />
+            </span>
             Huazhong University of Science and Technology, Bachelor of Science in Computer Science, 2021-2025
           </li>
         </ul>
