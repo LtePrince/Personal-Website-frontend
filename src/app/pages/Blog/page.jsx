@@ -21,7 +21,7 @@ export default function Blog() {
     }
 
     // 向后端发送请求获取博客数据
-    fetch('http://localhost:8080/pages/Blog')
+    fetch('http://101.132.86.173:8080/pages/Blog')
       .then(response => response.json())
       .then(data => {
         setBlogs(data);
