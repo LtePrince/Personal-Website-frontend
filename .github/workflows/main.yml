@@ -32,7 +32,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: "./next,./public,./next.config.js,./package.json,./package-lock.json"
           target: "/www/wwwroot/Personal-Website-frontend"
-          rsync_options: "--exclude=.git --exclude=.gitignore --exclude=node_modules --exclude=.github --exclude=.vscode --exclude=eslint.config.mjs --exclude=jsconfig.json --exclude=postcss.config.mjs --exclude=tailwind.config.mjs"
 
       # 步骤2：远程执行命令 - 使用 appleboy/ssh-action
       - name: Run commands on server
