@@ -32,7 +32,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /www/wwwroot/Personal-Website-frontend
-            rm -rf ./*
+            rm -rf ./* .[a-zA-Z0-9]*
 
       - name: Sync files to server
         uses: appleboy/scp-action@v0.1.7
