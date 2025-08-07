@@ -41,6 +41,22 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          # 最新版本的 ssh-action 主要只接受 script 参数
           script: |
             echo "文件传输完成，正在重启服务..."
+            # 1. 切换到您部署文件的目录
+            cd /www/wwwroot/Personal-Website-frontend
+
+            # 2. 确保在远程服务器上安装了PM2（只需执行一次）
+            # npm install pm2 -g 
+            
+            # 3. 停止旧的PM2进程（如果存在）
+            pm2 stop frontend-app || true # '|| true' 确保进程不存在时不会报错
+
+            # 4. 重新启动新的PM2进程。PM2会去查找当前的目录下的 package.json 文件。
+            # --name frontend-app 是给这个进程起个名字，方便管理
+            pm2 start npm --name frontend-app -- start
+
+            # 5. 保存PM2进程列表，使其在服务器重启后自动恢复
+            pm2 save
+            
+            echo "部署成功！"
