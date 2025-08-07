@@ -58,11 +58,14 @@ jobs:
             # 2. 确保在远程服务器上安装了PM2（只需执行一次）
             # npm install pm2 -g 
 
-            # 4. 重新启动新的PM2进程。PM2会去查找当前的目录下的 package.json 文件。
+             # 3. 清除所有旧的 PM2 进程，这会造成短暂的停机
+            pm2 delete all || true
+            
+            # 4. 启动新的应用，PM2会去查找当前的目录下的 package.json 文件。
             # --name frontend-app 是给这个进程起个名字，方便管理
-            pm2 restart npm --name frontend-app -- start
-
-            # 5. 保存PM2进程列表，使其在服务器重启后自动恢复
+            pm2 start ./node_modules/.bin/next --name frontend-app -- start
+            
+            # 5. 保存PM2进程列表
             pm2 save
             
             echo "部署成功！"
