@@ -32,6 +32,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
+          sync: true
           source: "./.next/static/,./public/,./.next/standalone/"
           target: "/www/wwwroot/Personal-Website-frontend" # 您服务器上存放项目的路径
           script: |
