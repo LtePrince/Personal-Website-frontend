@@ -30,7 +30,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          source: "./"
+          source: "./next,./public,./next.config.js,./package.json,./package-lock.json"
           target: "/www/wwwroot/Personal-Website-frontend"
           rsync_options: "--exclude=.git --exclude=.gitignore --exclude=node_modules --exclude=.github --exclude=.vscode --exclude=eslint.config.mjs --exclude=jsconfig.json --exclude=postcss.config.mjs --exclude=tailwind.config.mjs"
 
