@@ -114,6 +114,7 @@ h2 {
   margin: 5px 0;
   padding: 10px;
   border-radius: 5px;
+  font-size: 1.2rem;
 }
 
 .dark-mode .skills li {
@@ -122,8 +123,11 @@ h2 {
 
 .latest-blog article {
   background-color: #f0f0f0;
+  margin-left: 20px;
+  cursor: pointer;
   padding: 20px;
   border-radius: 5px;
+  font-size: 1.2rem;
 }
 
 .dark-mode .latest-blog article {

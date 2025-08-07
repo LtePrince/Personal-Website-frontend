@@ -1,8 +1,15 @@
 import React from 'react';
 import { FaGithub, FaTelegram, FaEnvelope, FaGraduationCap} from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 import './HomePage.css';
 
-function HomePage({ isDarkMode }) {
+function HomePage({ isDarkMode, latestBlog }) {
+  const router = useRouter();
+  
+  const handleBlogClick = (id) => {
+    router.push(`/pages/BlogDetail?id=${encodeURIComponent(id)}`);
+  };
+
   return (
     <main className={`main-content ${isDarkMode ? 'dark-mode' : ''}`}>
       <section id="Start" className="intro">
@@ -40,20 +47,24 @@ function HomePage({ isDarkMode }) {
       <section className="skills">
         <h2 className={isDarkMode ? 'dark-mode' : ''}>Skills</h2>
         <ul>
-          <li>Fully Homomorphic Encryption</li>
-          <li>Encrypted Inference Models</li>
+          <li>Proficient in GPU parallel programming (CUDA)</li>
+          <li>Fully Homomorphic Encryption (FHE) and Groth16 zkSNARK protocol</li>
           <li>Frontend Development (React, HTML, CSS)</li>
-          <li>Backend Development (Node.js, Express)</li>
+          <li>Backend Development (Golang, Node.js)</li>
         </ul>
       </section>
 
       <section className="latest-blog">
         <h2 className={isDarkMode ? 'dark-mode' : ''}>Latest Blog</h2>
-        <article>
-          <h3>Title: How to Efficiently Learn React</h3>
-          <p>Published on: December 25, 2024</p>
-          <p>Summary: This article introduces the best practices for learning React...</p>
-        </article>
+        {latestBlog ? (
+          <article onClick={() => handleBlogClick(latestBlog.id)}>
+            <h3>Title: {latestBlog.title}</h3>
+            <p>Published on: {latestBlog.date}</p>
+            <p>Summary: {latestBlog.summary}</p>
+          </article>
+        ) : (
+          <p>Loading...</p>
+        )}
       </section>
 
       <section id="Connect" className="connect-me">
