@@ -17,7 +17,7 @@ export default function Home() {
       setIsDarkMode(JSON.parse(savedTheme));
     }
 
-    fetch('https://whalefallsea.xyz/pages/LatestBlog')
+    fetch('https://whalefallsea.xyz/api/LatestBlog')
       .then(res => res.json())
       .then(data => setLatestBlog(data))
       .catch(() => setLatestBlog(null));

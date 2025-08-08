@@ -21,7 +21,7 @@ export default function Blog() {
     }
 
     // 向后端发送请求获取博客数据
-    fetch('https://whalefallsea.xyz/pages/Blog')
+    fetch('https://whalefallsea.xyz/api/Blog')
       .then(response => response.json())
       .then(data => {
         setBlogs(data);

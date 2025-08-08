@@ -31,7 +31,7 @@ function BlogDetail() {
 
     // 根据标题向后端请求博客的 Markdown 文件
     if (blogID) {
-      fetch(`https://whalefallsea.xyz/pages/BlogDetail?id=${blogID}`)
+      fetch(`https://whalefallsea.xyz/api/BlogDetail?id=${blogID}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Failed to fetch blog content');
