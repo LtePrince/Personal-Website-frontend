@@ -33,6 +33,18 @@ const nextConfig = {
       },
     ]
   },
+
+  // 在开发环境中，将 `/api/*` 代理到本地后端
+  // 在生产/预发布环境中，不进行重写，以便 Nginx 继续处理 `/api/*`
+  async rewrites() {
+    if (process.env.NODE_ENV === 'development') {
+      const target = process.env.API_BASE_URL || 'http://localhost:8080/api';
+      return [
+        { source: '/api/:path*', destination: `${target}/:path*` },
+      ];
+    }
+    return [];
+  },
 };
 
 export default nextConfig;

@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import BlogList from '@/app/components/BlogList';
+import BlogList from '@/app_back/components/BlogList';
 import './BlogContentSwitcher.css';
 
 export default function ContentSwitcher({blogs, isDarkMode }) {

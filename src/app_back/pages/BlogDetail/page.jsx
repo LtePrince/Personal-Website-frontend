@@ -3,8 +3,8 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { FaArrowLeft } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
-import Navbar from '@/app/components/Navbar';
-import Comments from '@/app/components/Comments';
+import Navbar from '@/app_back/components/Navbar';
+import Comments from '@/app_back/components/Comments';
 import Giscus from '@giscus/react';
 import './page.css';
 

@@ -1,9 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import Navbar from "@/app/components/Navbar";
-import SearchBar from '@/app/components/SearchBar';
-import Sidebar from '@/app/components/BlogSidebar';
-import ContentSwitcher from '@/app/components/BlogContentSwitcher'
+import Navbar from "@/app_back/components/Navbar";
+import SearchBar from '@/app_back/components/SearchBar';
+import Sidebar from '@/app_back/components/BlogSidebar';
+import ContentSwitcher from '@/app_back/components/BlogContentSwitcher'
 import './page.css';
 
 export default function Blog() {
