@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Keep compatibility with previous global font settings */
+* { font-family: Outfit, sans-serif; }

@@ -1,0 +1,14 @@
+/* Aggregated legacy CSS after migration out of app_back */
+@import '@/styles/legacy/page.css';
+@import '@/styles/legacy/components/Navbar.css';
+@import '@/styles/legacy/components/HomePage.css';
+@import '@/styles/legacy/components/SearchBar.css';
+@import '@/styles/legacy/components/BlogSidebar.css';
+@import '@/styles/legacy/components/BlogContentSwitcher.css';
+@import '@/styles/legacy/components/BlogList.css';
+@import '@/styles/legacy/pages/Blog/page.css';
+@import '@/styles/legacy/pages/BlogDetail/page.css';
+@import '@/styles/legacy/pages/MyLab/page.css';
+
+/* legacy 全局覆盖：使用 public 根路径图片，避免相对路径错误 */
+body { background-image: url('/images/background.jpg'); }

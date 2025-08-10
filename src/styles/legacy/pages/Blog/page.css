@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('/images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+  }
+  
+.app-container {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  min-height: 100vh;
+  max-width: 100vw;
+  background-color: rgba(255, 255, 255, 0.5); /* 设置半透明蒙板 */
+}
+
+.app-container.dark-mode {
+  background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
+}
+
+.BlogMain {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  width: 70vw;
+  height: 90vh;
+}
+
+@media (max-width: 1000px) {
+  .BlogMain {
+    width: 700px;
+  }
+}
+
+@media (max-width: 800px) {
+  .BlogMain {
+    flex-direction: column;
+    width: 90vw;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .content-switcher {
+    flex: 0 0 9vw;
+  }
+}
