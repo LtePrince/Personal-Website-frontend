@@ -1,0 +1,32 @@
+/* LatestSaysSection styles */
+.latest-says-section {
+  width: 90%;
+  max-width: 1800px;
+  margin: 40px auto 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.dark-mode .latest-says-section {
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 45px 10px rgba(245, 212, 111, 0.12);
+}
+.latest-says-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #007BFF;
+}
+.dark-mode .latest-says-section h2 { color: #D2B48C; }
+
+.latest-says-section .section-card { background: transparent; box-shadow: none; padding: 0; margin-top: 10px; }
+.latest-says-section .says-list { list-style: none; padding: 0; margin: 0; }
+.latest-says-section .says-list li { padding: 8px 0; border-bottom: 1px dashed rgba(0,0,0,0.1); }
+.dark-mode .latest-says-section .says-list li { border-bottom-color: rgba(255,255,255,0.2); }
+
+/* Dark mode content text color (only for content, not titles) */
+.dark-mode .latest-says-section .section-card,
+.dark-mode .latest-says-section .says-list li {
+  color: #fbf9f7;
+}

@@ -1,0 +1,184 @@
+.main-content h1, h2 {
+  color: #007BFF;
+}
+  
+.main-content h1.dark-mode, h2.dark-mode {
+  color: #D2B48C; /* 恢复：暗色模式下标题字体为亮棕色 */
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+ul.dark-mode {
+  color: #D2B48C; /* 暗色模式下列表字体颜色改为亮棕色 */
+}
+
+article {
+  margin-top: 20px;
+}
+
+article.dark-mode {
+  color: #D2B48C; /* 暗色模式下文章字体颜色改为亮棕色 */
+}
+
+.main-content {
+  width: 90%;
+  max-width: 1800px;
+  margin: 120px auto; /* 使内容左右居中 */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-content.dark-mode {
+  background-color: rgba(0, 0, 0, 0.4); /* 半透明黑色背景 */
+  box-shadow: 0 0 45px 10px rgba(245, 212, 111, 0.3); /* 淡黄色光晕 */
+  color: #fbf9f7; /* 暗色模式下字体颜色改为亮棕色 */
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.intro h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.intro p {
+  font-size: 1.2em;
+}
+
+.education, .interests, .skills, .latest-blog, .connect-me {
+  margin-bottom: 40px;
+}
+
+.education-list {
+  list-style: none;
+  padding-left: 1%;
+  margin: 0;
+}
+
+.education-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.edu-icon {
+  flex-shrink: 0;
+  width: 32px;      /* 稍大于图标size，保证对齐 */
+  height: 32px;
+  display: flex;
+  align-self: flex-start;
+  justify-content: center;
+  margin-right: 10px;
+  padding-top: 3px;
+}
+
+.interests ul {
+  list-style-type: disc;
+  padding-left: 1%;
+}
+
+.interests li {
+  display: list-item;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 5px;
+}
+
+.dark-mode h2 {
+  border-bottom: 2px solid #D2B48C; /* 恢复：暗色模式标题下边框 */
+}
+
+.skills ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skills li {
+  background-color: #f0f0f0;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.dark-mode .skills li {
+  background-color: rgba(39, 39, 39, 0.8);
+}
+
+.latest-blog article {
+  background-color: #f0f0f0;
+  margin-left: 20px;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.dark-mode .latest-blog article {
+  background-color: rgba(39, 39, 39, 0.8);
+}
+
+.connect-me p {
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px; /* 图标间距可根据需要调整 */
+  margin-top: 10px;
+}
+
+/* Shared section styles for new homepage modules */
+.section-container {
+  width: 90%;
+  max-width: 1800px;
+  margin: 40px auto 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.6); /* 与 .main-content 一致 */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.dark-mode .section-container {
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 45px 10px rgba(245, 212, 111, 0.12);
+}
+.section-container h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #007BFF; /* 与 .main-content h1,h2 保持一致 */
+}
+.dark-mode .section-container h2 { color: #D2B48C; } /* 恢复：避免全局影响 Friend Links 标题 */
+.section-card { /* 内层容器透明，避免重复卡片视觉 */
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  margin-top: 10px;
+}
+.section-title { font-size: 1.25rem; font-weight: 600; }
+.section-meta { opacity: 0.8; font-size: 0.92rem; margin: 6px 0 10px; }
+.section-summary { font-size: 1rem; }
+.says-list, .links-list { list-style: none; padding: 0; margin: 0; }
+.says-list li { padding: 8px 0; border-bottom: 1px dashed rgba(0,0,0,0.1); }
+.dark-mode .says-list li { border-bottom-color: rgba(255,255,255,0.2); }
+.links-list li { padding: 6px 0; }
+.links-list a { text-decoration: underline; }

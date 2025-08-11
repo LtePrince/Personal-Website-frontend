@@ -1,7 +1,11 @@
 /* Aggregated legacy CSS after migration out of app_back */
 @import '@/styles/legacy/page.css';
 @import '@/styles/legacy/components/Navbar.css';
-@import '@/styles/legacy/components/HomePage.css';
+@import '@/styles/legacy/components/Resume.css';
+@import '@/styles/legacy/components/SystemOverview.css';
+@import '@/styles/legacy/components/LatestBlogSection.css';
+@import '@/styles/legacy/components/LatestSaysSection.css';
+@import '@/styles/legacy/components/FriendLinks.css';
 @import '@/styles/legacy/components/SearchBar.css';
 @import '@/styles/legacy/components/BlogSidebar.css';
 @import '@/styles/legacy/components/BlogContentSwitcher.css';

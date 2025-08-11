@@ -4,8 +4,10 @@ import Navbar from '@/components/Navbar';
 import Markdown from '@/components/Markdown';
 import Comments from '@/components/Comments';
 import { FaArrowLeft } from 'react-icons/fa6';
+import { useRouter } from 'next/navigation';
 
 export default function ClientDetail({ id, data }) {
+  const router = useRouter();
   // 与首页/列表一致的主题状态
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -28,7 +30,7 @@ export default function ClientDetail({ id, data }) {
       <div className={`${isDarkMode ? 'dark-mode ' : ''}blog-detail-content`}>
         <div style={{ display: 'flex', alignItems: 'center', padding: '12px 0' }}>
           <button
-            onClick={() => { window.location.href = '/blog'; }}
+            onClick={() => { router.push('/blog'); }}
             aria-label="返回博客列表"
             style={{
               background: 'none',

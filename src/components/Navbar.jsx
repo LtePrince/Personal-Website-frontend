@@ -44,6 +44,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
         <Link href={'/'} className={`hidden md:block ${effectiveDarkMode ? 'dark-mode' : ''}`}>Home</Link>
         <Link href={'/blog'} className={`hidden md:block ${effectiveDarkMode ? 'dark-mode' : ''}`}>Blogs</Link>
         <Link href={'/lab'} className={`hidden md:block ${effectiveDarkMode ? 'dark-mode' : ''}`}>MyLab</Link>
+        <Link href={'/about'} className={`hidden md:block ${effectiveDarkMode ? 'dark-mode' : ''}`}>About Me</Link>
         {/* Apple 风格主题开关：首屏结构稳定，交互统一 */}
         <div
           className={`theme-switch${effectiveDarkMode ? ' switch-on dark-mode' : ''}`}
@@ -69,7 +70,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
         <li><Link href={'/'} onClick={() => setMenuOpen(false)}>Home</Link></li>
         <li><Link href={'/blog'} onClick={() => setMenuOpen(false)}>Blogs</Link></li>
         <li><Link href={'/lab'} onClick={() => setMenuOpen(false)}>MyLab</Link></li>
-        <li><a href="#Connect" onClick={() => setMenuOpen(false)}>Connect me</a></li>
+        <li><Link href={'/about'} onClick={() => setMenuOpen(false)}>About Me</Link></li>
       </ul>
     </nav>
   );

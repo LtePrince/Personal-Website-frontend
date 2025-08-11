@@ -1,0 +1,138 @@
+/* SystemOverview styles (separated) */
+.system-overview {
+  width: 90%;
+  max-width: 1800px;
+  margin: 120px auto 0; /* 与 .main-content 顶部留白保持一致 */
+}
+
+.system-overview .overview-inner {
+  display: grid;
+  grid-template-columns: 1fr; /* 默认移动端单列 */
+  gap: 20px;
+}
+
+/* 中屏两列 */
+@media (min-width: 900px) {
+  .system-overview .overview-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* 桌面端三列 */
+@media (min-width: 1200px) {
+  .system-overview .overview-inner {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.system-overview .visitor-card,
+.system-overview .server-card {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px 20px 18px;
+}
+
+.system-overview.dark-mode .visitor-card,
+.system-overview.dark-mode .server-card {
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 45px 10px rgba(245, 212, 111, 0.12);
+  color: #fbf9f7;
+}
+
+.system-overview .visitor-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.05rem;
+  margin: 8px 0;
+}
+/* 放大城市与主要天气信息，增强层级感 */
+.system-overview .visitor-row .visitor-location {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.system-overview .visitor-row .visitor-primary {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* 中屏以上稍作增强，避免移动端过大 */
+@media (min-width: 900px) {
+  .system-overview .visitor-row .visitor-location { font-size: 1.32rem; }
+  .system-overview .visitor-row .visitor-primary { font-size: 1.7rem; }
+}
+
+.system-overview .row-icon { opacity: 0.9; }
+
+.system-overview .stat-item { margin: 10px 0 14px; }
+.system-overview .stat-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+.system-overview .stat-label .row-icon { margin-right: 8px; }
+.system-overview .stat-value { font-weight: 600; }
+
+.system-overview .meter {
+  height: 10px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.dark-mode .system-overview .meter { background: rgba(255,255,255,0.15); }
+.system-overview .meter > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* 暗色模式下的进度条配色，统一为站点棕金色系 */
+.system-overview.dark-mode .meter > span,
+.dark-mode .system-overview .meter > span {
+  background: linear-gradient(90deg, #D2B48C 0%, #f5d46f 100%);
+}
+
+/* Comments */
+.system-overview h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.system-overview .comments-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.system-overview .comments-list li {
+  padding: 10px 0;
+  margin: 6px 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 0.98rem;
+}
+
+/* 透明化的评论卡片容器 */
+.system-overview .comments-card {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px 20px 18px;
+}
+.system-overview.dark-mode .comments-card {
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 45px 10px rgba(245, 212, 111, 0.12);
+}
+
+/* 暗色模式下：评论文字颜色（作者名强调为棕金色，其余为浅色） */
+.dark-mode .system-overview .comments-list li strong {
+  color: #D2B48C;
+}
+.dark-mode .system-overview .comments-list li,
+.dark-mode .system-overview .comments-list li span {
+  color: #fbf9f7;
+}

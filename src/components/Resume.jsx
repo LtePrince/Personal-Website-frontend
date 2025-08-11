@@ -8,12 +8,8 @@ import { useRouter } from 'next/navigation';
  * - Keeps original look & feel
  * - Links to new blog detail route
  */
-export default function HomePage({ isDarkMode, latestBlog }) {
+export default function Resume({ isDarkMode }) {
   const router = useRouter();
-
-  const handleBlogClick = (id) => {
-    router.push(`/blog/${encodeURIComponent(id)}`);
-  };
 
   return (
     <main className={`main-content ${isDarkMode ? 'dark-mode' : ''}`}>
@@ -59,18 +55,7 @@ export default function HomePage({ isDarkMode, latestBlog }) {
         </ul>
       </section>
 
-      <section className="latest-blog">
-        <h2 className={isDarkMode ? 'dark-mode' : ''}>Latest Blog</h2>
-        {latestBlog ? (
-          <article onClick={() => handleBlogClick(latestBlog.id)}>
-            <h3>Title: {latestBlog.title}</h3>
-            <p>Published on: {latestBlog.date}</p>
-            <p>Summary: {latestBlog.summary}</p>
-          </article>
-        ) : (
-          <p>Loading...</p>
-        )}
-      </section>
+  {/* Latest Blog section removed for About Me page usage */}
 
       <section id="Connect" className="connect-me">
         <h2 className={isDarkMode ? 'dark-mode' : ''}>Connect with Me</h2>
