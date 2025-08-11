@@ -5,7 +5,7 @@ import '@/styles/components/index.css';
 export const revalidate = 60; // ISR for list page
 export const metadata = {
   title: "Blogs",
-  description: 'Browse latest posts from Adolph',
+  description: 'Browse latest posts from Whalefall',
   alternates: { canonical: '/blog' },
 };
 

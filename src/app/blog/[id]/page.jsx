@@ -20,18 +20,18 @@ export async function generateMetadata({ params }) {
   try {
     const data = await getPost(id);
     return {
-      title: data?.title ? `${data.title} | Adolph's Blog` : "Adolph's Blog",
+      title: data?.title ? `${data.title} | Whalefall's Blog` : "Whalefall's Blog",
       description: data?.summary || '',
       alternates: { canonical: `/blog/${id}` },
       openGraph: {
-        title: data?.title || "Adolph's Blog",
+        title: data?.title || "Whalefall's Blog",
         description: data?.summary || '',
         url: `/blog/${id}`,
         type: 'article',
       },
     };
   } catch {
-    return { title: "Adolph's Blog" };
+    return { title: "Whalefall's Blog" };
   }
 }
 

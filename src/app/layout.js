@@ -14,21 +14,21 @@ const ovo = Ovo({
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
-    default: "Adolph's Blog",
-    template: "%s | Adolph's Blog",
+    default: "Whalefall's Blog",
+    template: "%s | Whalefall's Blog",
   },
-  description: "Personal blog of Adolph: posts, interests and projects.",
+  description: "Personal blog of Whalefall: posts, interests and projects.",
   openGraph: {
     type: "website",
-    siteName: "Adolph's Blog",
+    siteName: "Whalefall's Blog",
     url: "/",
-    title: "Adolph's Blog",
-    description: "Personal blog of Adolph: posts, interests and projects.",
+    title: "Whalefall's Blog",
+    description: "Personal blog of Whalefall: posts, interests and projects.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adolph's Blog",
-    description: "Personal blog of Adolph: posts, interests and projects.",
+    title: "Whalefall's Blog",
+    description: "Personal blog of Whalefall: posts, interests and projects.",
   },
 };
 

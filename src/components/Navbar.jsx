@@ -38,7 +38,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
         <a href="/">
           <Image src="/images/profile_photo.png" alt="Logo" width={40} height={40} />
         </a>
-        <strong className={effectiveDarkMode ? 'dark-mode' : ''}>Adolph's Blog</strong>
+        <strong className={effectiveDarkMode ? 'dark-mode' : ''}>Whalefall's Blog</strong>
       </div>
       <div className="nav-links">
         <Link href={'/'} className={`hidden md:block ${effectiveDarkMode ? 'dark-mode' : ''}`}>Home</Link>
