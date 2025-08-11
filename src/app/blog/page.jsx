@@ -10,8 +10,11 @@ export const metadata = {
 };
 
 async function getBlogs() {
-  const base = process.env.API_BASE_URL || '';
-  const url = base ? `${base}/Blog` : `/api/Blog`;
+  const base = process.env.API_BASE_URL;
+  if (!base) {
+    throw new Error('Missing API_BASE_URL environment variable');
+  }
+  const url = `${base}/Blog`;
   const res = await fetch(url, { next: { revalidate: 60 } });
   if (!res.ok) throw new Error('Failed to fetch blogs');
   return res.json();

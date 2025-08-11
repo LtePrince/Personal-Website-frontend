@@ -5,8 +5,11 @@ import ClientDetail from './ClientDetail';
 export const revalidate = 300; // ISR for details
 
 async function getPost(id) {
-  const base = process.env.API_BASE_URL || '';
-  const url = base ? `${base}/BlogDetail?id=${encodeURIComponent(id)}` : `/api/BlogDetail?id=${encodeURIComponent(id)}`;
+  const base = process.env.API_BASE_URL;
+  if (!base) {
+    throw new Error('Missing API_BASE_URL environment variable');
+  }
+  const url = `${base}/BlogDetail?id=${encodeURIComponent(id)}`;
   const res = await fetch(url, { next: { revalidate: 300 } });
   if (!res.ok) throw new Error('Failed to fetch blog detail');
   return res.json();
