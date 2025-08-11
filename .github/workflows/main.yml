@@ -8,6 +8,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      APP_DIR: /www/wwwroot/Personal-Website-frontend
+      KEEP_RELEASES: 5
 
     steps:
       - name: Checkout code
@@ -18,54 +21,81 @@ jobs:
         with:
           node-version: 20 # 设置 Node.js 版本
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies (CI 检查)
+        run: npm ci --prefer-offline --no-audit --progress=false
 
-      - name: Build Next.js project
+      - name: Build Next.js project (CI 检查)
         run: npm run build
 
-      - name: remove old files
-        uses: appleboy/ssh-action@v0.1.10  # 使用最新版本执行脚本
+      - name: Compute release timestamp
+        run: echo "RELEASE_TS=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+
+      - name: Prepare release dir on server
+        uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /www/wwwroot/Personal-Website-frontend
-            rm -rf ./* .[a-zA-Z0-9]*
-
-      - name: Sync files to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          source: "./"
-          target: "/www/wwwroot/Personal-Website-frontend"
+            set -euo pipefail
+            APP_DIR="${{ env.APP_DIR }}"
+            RELEASE_TS="${{ env.RELEASE_TS }}"
+            RELEASE="$APP_DIR/releases/$RELEASE_TS"
+            mkdir -p "$APP_DIR/releases"
+            echo "Cloning repository into $RELEASE ..."
+            git clone --depth=1 --branch main "https://github.com/${{ github.repository }}.git" "$RELEASE"
 
       # 步骤2：远程执行命令 - 使用 appleboy/ssh-action
       - name: Run commands on server
-        uses: appleboy/ssh-action@v0.1.10  # 使用最新版本执行脚本
+        uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            echo "文件传输完成，正在重启服务..."
-            # 1. 切换到您部署文件的目录
-            cd /www/wwwroot/Personal-Website-frontend
+            set -euo pipefail
+            APP_DIR="${{ env.APP_DIR }}"
+            RELEASE_TS="${{ env.RELEASE_TS }}"
+            RELEASE="$APP_DIR/releases/$RELEASE_TS"
+            KEEP_RELEASES="${{ env.KEEP_RELEASES }}"
+            echo "部署开始: $RELEASE"
 
-            # 2. 确保在远程服务器上安装了PM2（只需执行一次）
-            # npm install pm2 -g 
+            # 1) 软链生产环境变量（如存在）
+            ln -sf "$APP_DIR/shared/.env.production.local" "$RELEASE/.env.production.local" || true
 
-             # 3. 清除所有旧的 PM2 进程，这会造成短暂的停机
-            pm2 delete all || true
-            
-            # 4. 启动新的应用，PM2会去查找当前的目录下的 package.json 文件。
-            # --name frontend-app 是给这个进程起个名字，方便管理
-            pm2 start ./node_modules/.bin/next --name frontend-app -- start
-            
-            # 5. 保存PM2进程列表
+            # 2) 安装依赖并构建（在服务器端完成，避免传输 node_modules）
+            cd "$RELEASE"
+            npm ci --prefer-offline --no-audit --progress=false
+            npm run build
+
+            # 3) 切换 current 指向新版本（无感切换）
+            ln -sfn "$RELEASE" "$APP_DIR/current"
+
+            # 4) 使用 PM2 启动/重启（保留你原有进程名）
+            cd "$APP_DIR/current"
+            APP_NAME="frontend-app"
+            if pm2 describe "$APP_NAME" >/dev/null 2>&1; then
+              NODE_ENV=production PORT=3000 pm2 restart "$APP_NAME" --update-env
+            else
+              NODE_ENV=production PORT=3000 pm2 start ./node_modules/.bin/next --name "$APP_NAME" -- start
+            fi
             pm2 save
-            
-            echo "部署成功！"
+
+            echo "部署成功: $RELEASE"
+
+      - name: Cleanup old releases on server
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            set -euo pipefail
+            APP_DIR="${{ env.APP_DIR }}"
+            KEEP_RELEASES="${{ env.KEEP_RELEASES }}"
+            echo "保留最近 ${KEEP_RELEASES} 个 releases，清理更旧版本..."
+            cd "$APP_DIR/releases" 2>/dev/null || exit 0
+            # 列出按时间倒序的目录，保留前 KEEP_RELEASES 个，其余删除
+            REMAIN=${KEEP_RELEASES:-5}
+            ls -1dt -- */ 2>/dev/null | tail -n +$((REMAIN+1)) | xargs -r -I{} rm -rf -- "{}"
+            echo "清理完成"
