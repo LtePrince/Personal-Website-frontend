@@ -71,14 +71,11 @@ jobs:
             # 3) 切换 current 指向新版本（无感切换）
             ln -sfn "$RELEASE" "$APP_DIR/current"
 
-            # 4) 使用 PM2 启动/重启（保留你原有进程名）
+            # 4) 使用 PM2 重新启动（总是重新创建以绑定新 release 路径）
             cd "$APP_DIR/current"
             APP_NAME="frontend-app"
-            if pm2 describe "$APP_NAME" >/dev/null 2>&1; then
-              NODE_ENV=production PORT=3000 pm2 restart "$APP_NAME" --update-env
-            else
-              NODE_ENV=production PORT=3000 pm2 start ./node_modules/.bin/next --name "$APP_NAME" -- start
-            fi
+            pm2 delete "$APP_NAME" || true
+            NODE_ENV=production PORT=3000 pm2 start ./node_modules/.bin/next --name "$APP_NAME" -- start
             pm2 save
 
             echo "部署成功: $RELEASE"
