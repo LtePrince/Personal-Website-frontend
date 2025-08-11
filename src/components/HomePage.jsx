@@ -18,7 +18,7 @@ export default function HomePage({ isDarkMode, latestBlog }) {
   return (
     <main className={`main-content ${isDarkMode ? 'dark-mode' : ''}`}>
       <section id="Start" className="intro">
-        <h1 className={isDarkMode ? 'dark-mode' : ''}>Welcome to Adoph's Blog</h1>
+        <h1 className={isDarkMode ? 'dark-mode' : ''}>Welcome to Whalefall's Blog</h1>
         <p>This site showcases my resume, interests, and skills.</p>
       </section>
 
