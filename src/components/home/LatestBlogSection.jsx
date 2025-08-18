@@ -8,15 +8,16 @@ export default function LatestBlogSection({ blogs = [] }) {
   return (
     <section className="latest-blog-section">
       <h2><FaBookOpen /> Latest Blog</h2>
-      <div className="blog-list">
-        {has ? (
-          blogs.map(b => <ClientLatestBlogCard key={b.id} blog={b} />)
+      
+        {has ? (<div className="blog-list">
+          {blogs.map(b => <ClientLatestBlogCard key={b.id} blog={b} />)}
+        </div>
         ) : (
           <div className="blog-list skeleton-wrapper" aria-label="loading latest blogs" role="status">
-            {Array.from({ length: 2 }).map((_,i) => <BlogSkeleton key={i} variant="card" />)}
+            {Array.from({ length: 4 }).map((_,i) => <BlogSkeleton key={i} variant="card" />)}
           </div>
         )}
-      </div>
+      
     </section>
   );
 }
