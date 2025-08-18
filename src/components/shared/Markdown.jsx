@@ -6,4 +6,3 @@ import rehypeSanitize from 'rehype-sanitize';
 export default function Markdown({ children }) {
 	return <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSanitize]}>{children}</ReactMarkdown>;
 }
-export { default } from '@/components/Markdown';

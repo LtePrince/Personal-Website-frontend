@@ -8,7 +8,6 @@ export default function LatestBlogSection({ blogs = [] }) {
   return (
     <section className="latest-blog-section">
       <h2><FaBookOpen /> Latest Blog</h2>
-      
         {has ? (<div className="blog-list">
           {blogs.map(b => <ClientLatestBlogCard key={b.id} blog={b} />)}
         </div>

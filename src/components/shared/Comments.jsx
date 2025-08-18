@@ -10,4 +10,3 @@ export default function Comments({
 }) {
 	return <Giscus {...{ repo, repoId, category, categoryId, mapping, reactionsEnabled, emitMetadata, inputPosition, theme, lang, strict }} />;
 }
-export { default } from '@/components/Comments';
