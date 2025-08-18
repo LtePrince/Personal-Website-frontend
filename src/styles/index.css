@@ -30,5 +30,4 @@ body { background-image: url('/images/background.jpg'); }
 .skeleton-title { height: 20px; margin-bottom: 12px; width: 60%; }
 .skeleton-text { height: 14px; margin-bottom: 8px; width: 90%; }
 .skeleton-text.short { width: 40%; }
-.skeleton-row { padding: 12px; border-radius: 8px; background: rgba(0,0,0,0.03); margin-bottom: 10px; }
-.dark-mode .skeleton-row { background: rgba(255,255,255,0.06); }
+/* .skeleton-row definitions moved to List.css for blog list; removed here to avoid override */

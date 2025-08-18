@@ -44,4 +44,4 @@ export default function Resume({ isDarkMode }) {
 		</main>
 	);
 }
-export { default } from '@/components/Resume';
+// 移除冗余的再导出避免重复 default 导出错误

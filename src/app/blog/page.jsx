@@ -1,8 +1,9 @@
 import React from 'react';
 import ClientBlog from '@/components/blog/ClientBlog';
 import '@/styles/index.css';
+import { apiUrl } from '@/lib/api';
 
-export const revalidate = 60; // ISR for list page
+export const dynamic = 'force-dynamic'; // 统一主页动态 SSR 风格
 export const metadata = {
   title: "Blogs",
   description: 'Browse latest posts from Whalefall',
@@ -10,24 +11,19 @@ export const metadata = {
 };
 
 async function getBlogs() {
-  const base = process.env.API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080';
-  const url = `${base.replace(/\/$/, '')}/api/Blog`;
-  const res = await fetch(url, { next: { revalidate: 60 } });
-  if (!res.ok) throw new Error('Failed to fetch blogs');
-  return res.json();
+  try {
+    const res = await fetch(apiUrl('Blog'), { cache: 'no-store' });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+  } catch {
+    return [];
+  }
 }
 
 export default async function BlogPage() {
-  let blogs = [];
-  try {
-    blogs = await getBlogs();
-  } catch (e) {
-    blogs = [];
-  }
-
-  return (
-    <ClientBlog blogs={blogs} />
-  );
+  const blogs = await getBlogs();
+  return <ClientBlog blogs={blogs} />;
 }
 
 // 移除了内联的 `use client` 包装组件，改为从 ./ClientBlog 引入
