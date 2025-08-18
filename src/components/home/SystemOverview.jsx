@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import { apiUrl } from '@/lib/api';
 import { FaCloudSun, FaMapMarkerAlt, FaMicrochip, FaMemory, FaHdd, FaComments, FaWind, FaTint } from 'react-icons/fa';
 import { FaSmog } from 'react-icons/fa';
 
@@ -8,10 +9,47 @@ function aqiCategoryUS(aqi) { const v = Number(aqi); if (!isFinite(v)) return '�
 function weatherTextFallback(txt) { if (!txt || typeof txt !== 'string') return '天气'; return txt; }
 
 export default function SystemOverview({ isDarkMode }) {
-	const [weather, setWeather] = useState({ location: 'Sydney, AU', tempC: null, windSpeedKmh: null, windLevel: null, humidity: null, aqiUS: null, aqiText: null, weatherText: 'Sunny' });
+	// 统一内部字段命名，前端状态与后端字段做一次解耦
+	const [weather, setWeather] = useState({ location: null, tempC: null, windSpeedKmh: null, windLevel: null, humidity: null, aqiUS: null, aqiText: null, weatherText: null, updatedAt: null });
 	const stats = { cpu: 18, mem: 42, disk: 68 };
 	const comments = [ { id: 1, author: 'Alice', text: 'comment1' }, { id: 2, author: 'Bob', text: 'comment2' }, { id: 3, author: 'Carol', text: 'comment3' } ];
-	useEffect(() => { let mounted = true; (async () => { try { const res = await fetch('/api/weather'); if (!res.ok) return; const data = await res.json(); if (!mounted) return; const location = data.location ?? weather.location; const temp = data.temperatureC ?? null; const windKmh = data.windSpeedKmh ?? null; const windLevel = data.windLevel ?? (typeof windKmh === 'number' ? beaufortFromKmh(windKmh) : null); const rh = data.humidity ?? null; const aqi = data.aqiUS ?? null; const wtext = weatherTextFallback(data.weatherText); setWeather({ location, tempC: typeof temp === 'number' ? Math.round(temp) : null, windSpeedKmh: typeof windKmh === 'number' ? Math.round(windKmh) : null, windLevel: typeof windLevel === 'number' ? windLevel : (typeof windKmh === 'number' ? beaufortFromKmh(windKmh) : null), humidity: typeof rh === 'number' ? Math.round(rh) : null, aqiUS: typeof aqi === 'number' ? Math.round(aqi) : null, aqiText: aqiCategoryUS(aqi), weatherText: wtext }); } catch {} })(); return () => { mounted = false; }; }, []);
+	useEffect(() => {
+		let mounted = true;
+		(async () => {
+			try {
+				const res = await fetch(apiUrl('Weather'), { cache: 'no-store' });
+				if (!res.ok) return;
+				const data = await res.json();
+				if (!mounted) return;
+				const num = v => {
+					if (v === null || v === undefined || v === '') return null;
+					const n = Number(v);
+					return Number.isFinite(n) ? n : null;
+				};
+				const location = (data.location && typeof data.location === 'string') ? data.location : weather.location;
+				const temp = num(data.temperatureC);
+				const windKmh = num(data.windSpeedKmh);
+				let windLevel = num(data.windLevel);
+				if (windLevel == null && windKmh != null) windLevel = beaufortFromKmh(windKmh);
+				const rh = num(data.humidity);
+				const aqi = num(data.aqiUS);
+				const wtext = weatherTextFallback(data.weatherText);
+				setWeather(prev => ({
+					...prev,
+					location,
+					tempC: temp != null ? Math.round(temp) : null,
+					windSpeedKmh: windKmh != null ? Math.round(windKmh) : null,
+					windLevel: windLevel != null ? windLevel : null,
+					humidity: rh != null ? Math.round(rh) : null,
+					aqiUS: aqi != null ? Math.round(aqi) : null,
+					aqiText: aqiCategoryUS(aqi),
+					weatherText: wtext,
+					updatedAt: data.updatedAt || null,
+				}));
+			} catch { /* 忽略错误，保持初始占位 */ }
+		})();
+		return () => { mounted = false; };
+	}, []);
 	return (
 		<div className={`system-overview ${isDarkMode ? 'dark-mode' : ''}`}>
 			<div className="overview-inner">
