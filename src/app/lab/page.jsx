@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/shared/Navbar';
 import '@/styles/components/index.css';
 
 export default function LabPage() {

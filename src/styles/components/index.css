@@ -1,18 +1,44 @@
-/* Aggregated legacy CSS after migration out of app_back */
+/* --------------------------------------------------
+ * Component Styles Aggregator
+ * TODO: 逐步将 legacy 样式拆分/改写为模块化 (可迁移到各组件同级 .module.css 或 Tailwind)
+ * -------------------------------------------------- */
+
+/* Base page-level legacy (仍依赖一些通用类) */
 @import '@/styles/legacy/page.css';
+
+/* Shared / layout */
 @import '@/styles/legacy/components/Navbar.css';
 @import '@/styles/legacy/components/Resume.css';
+
+/* Home sections */
 @import '@/styles/legacy/components/SystemOverview.css';
 @import '@/styles/legacy/components/LatestBlogSection.css';
 @import '@/styles/legacy/components/LatestSaysSection.css';
 @import '@/styles/legacy/components/FriendLinks.css';
+
+/* Blog domain */
 @import '@/styles/legacy/components/SearchBar.css';
 @import '@/styles/legacy/components/BlogSidebar.css';
-@import '@/styles/legacy/components/BlogContentSwitcher.css';
+@import '@/styles/legacy/components/BlogContentSwitcher.css'; /* restore original ContentSwitcher styles */
 @import '@/styles/legacy/components/BlogList.css';
 @import '@/styles/legacy/pages/Blog/page.css';
 @import '@/styles/legacy/pages/BlogDetail/page.css';
+
+/* Other pages */
 @import '@/styles/legacy/pages/MyLab/page.css';
 
-/* legacy 全局覆盖：使用 public 根路径图片，避免相对路径错误 */
+/* 全局背景：使用 public 根路径图片，避免相对路径错误 */
 body { background-image: url('/images/background.jpg'); }
+
+/* ---------------- Skeleton (shared) ---------------- */
+.skeleton { position: relative; overflow: hidden; background: linear-gradient(90deg,#eee,#f5f5f5,#eee); background-size: 200% 100%; animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 4px; }
+.dark-mode .skeleton { background: linear-gradient(90deg,#333,#3a3a3a,#333); }
+@keyframes skeleton-loading { 0% { background-position: 0 0; } 100% { background-position: -200% 0; } }
+.skeleton-card { cursor: default; }
+.skeleton-title { height: 20px; margin-bottom: 12px; width: 60%; }
+.skeleton-text { height: 14px; margin-bottom: 8px; width: 90%; }
+.skeleton-text.short { width: 40%; }
+.skeleton-row { padding: 12px; border-radius: 8px; background: rgba(0,0,0,0.03); margin-bottom: 10px; }
+.dark-mode .skeleton-row { background: rgba(255,255,255,0.06); }
+
+/* END aggregator */

@@ -1,6 +1,6 @@
 import React from 'react';
 import '@/styles/components/index.css';
-import ClientDetail from './ClientDetail';
+import ClientDetail from '@/components/blogDetail/ClientDetail';
 
 export const revalidate = 300; // ISR for details
 

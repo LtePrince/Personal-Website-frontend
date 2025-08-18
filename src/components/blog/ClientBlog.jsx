@@ -1,11 +1,13 @@
 'use client';
 import React, { useEffect, useMemo, useState } from 'react';
-import Navbar from '@/components/Navbar';
-import SearchBar from '@/components/SearchBar';
-import Sidebar from '@/components/BlogSidebar';
-import ContentSwitcher from '@/components/BlogContentSwitcher';
+import Navbar from '@/components/shared/Navbar';
+import SearchBar from '@/components/blog/SearchBar';
+import Sidebar from '@/components/blog/Sidebar';
+import * as ContentSwitcherModule from '@/components/blog/ContentSwitcher';
+const ContentSwitcher = ContentSwitcherModule.default || ContentSwitcherModule;
 
-export default function ClientBlog({ blogs }) {
+// 物理迁移自 app/blog/ClientBlog.jsx
+export default function ClientBlog({ blogs = [] }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [query, setQuery] = useState('');
 
@@ -31,7 +33,11 @@ export default function ClientBlog({ blogs }) {
       <SearchBar onSearch={setQuery} isDarkMode={isDarkMode} />
       <div className="BlogMain">
         <Sidebar isDarkMode={isDarkMode} />
-        <ContentSwitcher blogs={filteredBlogs} isDarkMode={isDarkMode} />
+        {typeof ContentSwitcher === 'function' ? (
+          <ContentSwitcher blogs={filteredBlogs} isDarkMode={isDarkMode} />
+        ) : (
+          <div style={{padding:20,color:'red'}}>ContentSwitcher 加载失败: 类型 {typeof ContentSwitcher}</div>
+        )}
       </div>
     </div>
   );

@@ -1,32 +1,28 @@
-"use client";
-import React, { useEffect, useState } from 'react';
-import Navbar from '@/components/Navbar';
-import SystemOverview from '@/components/SystemOverview';
-import LatestSaysSection from '@/components/LatestSaysSection';
-import FriendLinks from '@/components/FriendLinks';
-import LatestBlogSection from '@/components/LatestBlogSection';
+import React from 'react';
+import LatestBlogSection from '@/components/home/LatestBlogSection';
+import HomeClientShell from '@/components/home/HomeClientShell';
+import { apiUrl } from '@/lib/api';
 
-export default function Home() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+export const dynamic = 'force-dynamic'; // SSR no-store 效果
 
-  useEffect(() => {
-    const saved = localStorage.getItem('isDarkMode');
-    if (saved) setIsDarkMode(JSON.parse(saved));
-  }, []);
+async function getLatestBlogs() {
+  try {
+    const res = await fetch(apiUrl('Blog'), { cache: 'no-store' });
+    if (!res.ok) return [];
+    const data = await res.json();
+    const arr = Array.isArray(data) ? data : [];
+    return arr
+      .slice()
+      .sort((a, b) => (Date.parse(b?.date) || 0) - (Date.parse(a?.date) || 0))
+      .slice(0, 6);
+  } catch {
+    return [];
+  }
+}
 
-  const toggleTheme = () => {
-    const next = !isDarkMode;
-    setIsDarkMode(next);
-    localStorage.setItem('isDarkMode', JSON.stringify(next));
-  };
-
+export default async function Home() {
+  const blogs = await getLatestBlogs(); // SSR 获取，后端挂则为空数组
   return (
-    <div className={`app-container ${isDarkMode ? 'dark-mode' : ''}`}>
-      <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-      <SystemOverview isDarkMode={isDarkMode} />
-      <LatestBlogSection isDarkMode={isDarkMode} />
-      <LatestSaysSection isDarkMode={isDarkMode} />
-      <FriendLinks isDarkMode={isDarkMode} />
-    </div>
+    <HomeClientShell blogs={blogs} />
   );
 }
