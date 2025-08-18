@@ -1,0 +1,19 @@
+/* Blog detail page specific styles (migrated) */
+.blog-detail-container { display:flex; flex-direction:column; place-items:center; min-height:100vh; max-width:100vw; background-color:rgba(255,255,255,0.5); }
+.blog-detail-container.dark-mode { background-color:rgba(0,0,0,0.7); }
+.blog-detail-content { width:90%; max-width:1500px; margin-top:120px; padding:0 2% 100px; background:rgba(255,255,255,0.6); border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); color:#333; }
+.blog-detail-content.dark-mode { background:rgba(0,0,0,0.4); box-shadow:0 0 45px 10px rgba(245,212,111,0.3); color:#fbf9f7; }
+.markdown-body { padding:0 10%; font-size:1.3rem; }
+.markdown-body h1 { font-size:2.2rem; margin:1.2em 0 .6em; }
+.markdown-body h2 { font-size:1.7rem; margin:1em 0 .5em; }
+.markdown-body h3 { font-size:1.3rem; margin:.8em 0 .4em; }
+.dark-mode .markdown-body, .blog-detail-content.dark-mode .markdown-body { color:#fbf9f7; }
+.dark-mode .markdown-body a { color:#9ecbff; }
+.dark-mode .markdown-body strong { color:#fff; }
+.dark-mode .markdown-body code { background:rgba(255,255,255,0.08); color:#ffdf9e; padding:.15em .35em; border-radius:4px; }
+.dark-mode .markdown-body pre code { background:transparent; color:#fbf9f7; }
+.dark-mode .markdown-body blockquote { color:#e8e6e3; border-left:4px solid #d2b48c; background:rgba(255,255,255,0.06); }
+.dark-mode .markdown-body hr { border-color:#7a6a50; }
+.blog-detail-content.dark-mode a { color:inherit; }
+.giscus-container { width:90%; max-width:1500px; margin:70px; padding:2%; background:rgba(255,255,255,0.6); border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); color:#333; }
+.giscus-container.dark-mode { background:rgba(0,0,0,0.4); box-shadow:0 0 45px 10px rgba(245,212,111,0.3); color:#fbf9f7; }

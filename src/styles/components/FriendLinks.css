@@ -1,0 +1,3 @@
+/* Moved */
+.dark-mode .section-container.friend-links .section-card, .dark-mode .section-container.friend-links .links-list li, .dark-mode .section-container.friend-links .links-list a { color:#fbf9f7; }
+.dark-mode .section-container.friend-links .links-list a:hover { text-decoration:underline; }

@@ -1,0 +1,6 @@
+/* Moved */
+.search-bar { display:flex; justify-content:center; align-items:center; margin-top:150px; margin-bottom:100px; width:90%; max-width:700px; transition:opacity .3s, transform .3s; }
+.search-bar input { flex:1; padding:10px; margin-right:10px; background-color:rgba(255,255,255,0.7); border:1px solid #ccc; border-radius:5px; }
+.search-bar button { padding:10px 10px; border:none; background-color:#007BFF; color:#fff; border-radius:5px; cursor:pointer; }
+.dark-mode .search-bar input { background-color:#333333c9; color:#fff; border:1px solid #D2B48C; }
+.dark-mode .search-bar button { background-color:#a77b42; color:#fff; }

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/shared/Navbar';
 import Resume from '@/components/shared/Resume';
-import '@/styles/components/index.css';
+import '@/styles/index.css';
 
 export default function AboutPage() {
   const [isDarkMode, setIsDarkMode] = useState(false);

@@ -5,7 +5,7 @@ import SystemOverview from '@/components/home/SystemOverview';
 import LatestSaysSection from '@/components/home/LatestSaysSection';
 import FriendLinks from '@/components/home/FriendLinks';
 import LatestBlogSection from './LatestBlogSection';
-import '@/styles/components/index.css';
+import '@/styles/index.css';
 
 export default function HomeClientShell({ blogs }) {
   const [isDarkMode, setIsDarkMode] = useState(false);

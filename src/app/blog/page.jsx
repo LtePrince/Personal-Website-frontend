@@ -1,6 +1,6 @@
 import React from 'react';
 import ClientBlog from '@/components/blog/ClientBlog';
-import '@/styles/components/index.css';
+import '@/styles/index.css';
 
 export const revalidate = 60; // ISR for list page
 export const metadata = {

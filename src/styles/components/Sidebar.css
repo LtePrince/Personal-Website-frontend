@@ -1,0 +1,7 @@
+/* Moved */
+.sidebar { flex:0 0 15vw; border-radius:5px; padding:10px; background-color:rgba(255,255,255,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.1); min-width:200px; }
+.dark-mode .sidebar { background-color:rgba(0,0,0,0.4); box-shadow:0 0 45px 10px rgba(245,212,111,0.3); color:#f9f0e6; }
+.sidebar h3 { margin:10px; color:#0056b3; font-size:1.2em; }
+.dark-mode .sidebar h3 { color:#D2B48C; }
+.sidebar ul { list-style:none; padding:10px; }
+.sidebar li { margin:5px 0; line-height:2.0; }
